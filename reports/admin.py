@@ -1,6 +1,6 @@
 # coding:utf-8
 from django.contrib import admin
-from models import Class,Students,Teacher
+from models import Class,Students,Teacher,Domain,Type,Level
 # Register your models here.
 class ClassAdmin(admin.ModelAdmin):
 	"""docstring for ClassAdmin"""
@@ -26,7 +26,26 @@ class TeacherAdmin(admin.ModelAdmin):
 	#exclude = ('age',)  表单不包含的字段
     list_display = ('name','age','diplomas','class_name',)
 
+
+class DomainAdmin(admin.ModelAdmin):
+	"""docstring for DomainAdmin"""
+	list_display = ('id','name',)
+
+
+class TypeAdmin(admin.ModelAdmin):
+	"""docstring for DomainAdmin"""
+	list_display = ('id','name','domain_name',)
+
+
+class LevelAdmin(admin.ModelAdmin):
+	"""docstring for DomainAdmin"""
+	list_display = ('id','domain_name','type_name','num','name',)
+
+
 		
 admin.site.register(Class,ClassAdmin)
 admin.site.register(Students,StudentsAdmin)
 admin.site.register(Teacher,TeacherAdmin)
+admin.site.register(Domain,DomainAdmin)
+admin.site.register(Type,TypeAdmin)
+admin.site.register(Level,LevelAdmin)
