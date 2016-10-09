@@ -18,6 +18,7 @@ from django.contrib import admin
 from reports import views as v
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$',v.index),
     url(r'^index/',v.index),
     url(r'^add/(\d+)/(\d+)',v.add,name='add'),
 ]
