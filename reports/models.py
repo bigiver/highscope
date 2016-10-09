@@ -15,7 +15,6 @@ class Class(models.Model):
 		return self.name
 
 
-
 class Students(models.Model):
 	"""docstring for ClassName"""
 	SEX_CHOICES = (('n',u'男'),('v',u'女'))
@@ -36,6 +35,29 @@ class Teacher(models.Model):
 	age = models.IntegerField(u'年龄')
 	diplomas = models.CharField(u'学历',max_length=30)
 	class_name = models.ForeignKey(Class)
+
+	def __unicode__(self):
+		return self.name
+class Domain(models.Model):
+    name = models.CharField(u'领域',max_length=100)
+
+    def __unicode__(self):
+    	return self.name
+
+
+class Type(models.Model):
+	name = models.CharField(u'类型',max_length=100)
+	domain_name = models.ForeignKey(Domain)
+
+	def __unicode__(self):
+		return self.name
+
+
+class Level(models.Model):
+	num = models.IntegerField(u'级别')
+	name = models.TextField(u'描述')
+	type_name = models.ForeignKey(Type)
+	domain_name = models.ForeignKey(Domain)
 
 	def __unicode__(self):
 		return self.name
