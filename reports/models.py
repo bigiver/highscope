@@ -18,10 +18,12 @@ class Class(models.Model):
 
 class Students(models.Model):
 	"""docstring for ClassName"""
+	SEX_CHOICES = (('n',u'男'),('v',u'女'))
+
 	name = models.CharField(u'姓名',max_length=50)
 	age = models.IntegerField(u'年龄')
 	birth_Date = models.DateField(u'出生日期')
-	sex = models.BooleanField(u'性别')
+	sex = models.CharField(u'性别',max_length=4,choices=SEX_CHOICES)
 	class_name = models.ForeignKey(Class)
 
 	def __unicode__(self):
