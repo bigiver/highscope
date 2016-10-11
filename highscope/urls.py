@@ -18,7 +18,12 @@ from django.contrib import admin
 from reports import views as v
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',v.index),
-    url(r'^index/',v.index),
+    url(r'^$',v.index,name='index'),
+    url(r'^index/',v.index,name='index'),
+    url(r'^indexM/',v.indexMain,name='indexMain'),
     url(r'^add/(\d+)/(\d+)',v.add,name='add'),
+    url(r'^login/',v.login,name='login'),
+    url(r'^editTesting/',v.formView,name='formView'),
+    url(r'^chartData/',v.eChart,name='chartData'),
+    url(r'^tableData/',v.tableData,name='tableData'),
 ]
