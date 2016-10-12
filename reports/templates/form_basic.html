@@ -27,22 +27,23 @@
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <form method="get" class="form-horizontal">
+                        <form method="get" class="form-horizontal" action="{% url 'addTesting' %}">
                             <div class="form-group">
                                 <label class="col-sm-1 control-label">姓名</label>
 
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="txtName">
                                 </div>
                                 <label class="col-sm-1 control-label">生日</label>
 
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control">
+                                    <input name="dateBirth" class="form-control layer-date" placeholder="YYYY-MM-DD" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                                    
                                 </div>
                                 <label class="col-sm-1 control-label">年龄</label>
 
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="txtAge">
                                 </div>
                             </div>
                             <!-- <div class="hr-line-dashed"></div> -->
@@ -50,12 +51,12 @@
                                 <label class="col-sm-1 control-label">测评阶段</label>
 
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control">
+                                    <input name="dateStart" class="form-control layer-date" placeholder="开始日期" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
                                 </div>
                                 <label class="col-sm-1 control-label">至</label>
 
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control">
+                                    <input name="dateEnd" class="form-control layer-date" placeholder="结束日期" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
                                 </div>
                                 
                             </div>
@@ -64,7 +65,7 @@
                                 <label class="col-sm-1 control-label">领域</label>
 
                                 <div class="col-sm-3">
-                                    <select class="form-control m-b" name="account">
+                                    <select class="form-control m-b" name="selDomain">
                                         <option>选项 1</option>
                                         <option>选项 2</option>
                                         <option>选项 3</option>
@@ -74,7 +75,7 @@
                                 <label class="col-sm-1 control-label">分类</label>
 
                                 <div class="col-sm-3">
-                                    <select class="form-control m-b" name="account">
+                                    <select class="form-control m-b" name="selType">
                                         <option>选项 1</option>
                                         <option>选项 2</option>
                                         <option>选项 3</option>
@@ -84,7 +85,7 @@
                                 <label class="col-sm-1 control-label">级别</label>
 
                                 <div class="col-sm-3">
-                                    <select class="form-control m-b" name="account">
+                                    <select class="form-control m-b" name="selLevel">
                                         <option>选项 1</option>
                                         <option>选项 2</option>
                                         <option>选项 3</option>
@@ -95,7 +96,7 @@
                             <!-- <div class="hr-line-dashed"></div> -->
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <textarea class="form-control" rows="2"></textarea>
+                                    <textarea class="form-control" rows="2" name="txtDescription"></textarea>
                                 </div>
                             </div>
                             <!-- <div class="hr-line-dashed"></div> -->
@@ -105,7 +106,7 @@
                             <!-- <div class="hr-line-dashed"></div> -->
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <textarea class="form-control" rows="4"></textarea>
+                                    <textarea class="form-control" rows="4" name="txtRemark"></textarea>
                                     
                                 </div>
                             </div>
@@ -122,55 +123,24 @@
             </div>
         </div>
     </div>
-
-    <div id="modal-form" class="modal fade" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-6 b-r">
-                            <h3 class="m-t-none m-b">登录</h3>
-
-                            <p>欢迎登录本站(⊙o⊙)</p>
-
-                            <form role="form">
-                                <div class="form-group">
-                                    <label>用户名：</label>
-                                    <input type="email" placeholder="请输入用户名" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>密码：</label>
-                                    <input type="password" placeholder="请输入密码" class="form-control">
-                                </div>
-                                <div>
-                                    <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>登录</strong>
-                                    </button>
-                                    <label>
-                                        <input type="checkbox" class="i-checks">自动登录</label>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-sm-6">
-                            <h4>还不是会员？</h4>
-                            <p>您可以注册一个账户</p>
-                            <p class="text-center">
-                                <a href="form_basic.html"><i class="fa fa-sign-in big-icon"></i></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
   
     <script src="{% static "js/jquery.min.js" %}"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
     <script src="{% static "js/plugins/layer/layer.min.js" %}"></script>
     <script src="{% static "js/content.min.js" %}"></script>
-
+    <script src="{% static "js/plugins/layer/laydate/laydate.js" %}"></script>
     <script>
-        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+        laydate({elem:"#hello",event:"focus"});var start={elem:"#start",format:"YYYY/MM/DD hh:mm:ss",min:laydate.now(),max:"2099-06-16 23:59:59",istime:true,istoday:false,choose:function(datas){end.min=datas;end.start=datas}};var end={elem:"#end",format:"YYYY/MM/DD hh:mm:ss",min:laydate.now(),max:"2099-06-16 23:59:59",istime:true,istoday:false,choose:function(datas){start.max=datas}};laydate(start);laydate(end);
     </script>
+    
+    
+    <script>
+        $(document).ready(function(){
+            $(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})
+
+        });
+    </script>
+
 </body>
 
 </html>
