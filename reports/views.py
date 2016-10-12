@@ -3,6 +3,7 @@
 from django.shortcuts import render
 
 from django.http import HttpResponse
+from django.http import JsonResponse
 
 # Create your views here.
 def index(request):
@@ -28,6 +29,7 @@ def tableData(request):
 def login(request):
 	return render(request,'login.html')
 
-def add(request,a,b):
-    c = int(a) + int(b)
-    return HttpResponse(str(c))
+#填写表单
+def addTesting(request):
+    name = request.GET.get('txtName')
+    return HttpResponse(str(name))
