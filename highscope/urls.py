@@ -15,15 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from reports import views as v
+from reports.views import view_index as vi
+from reports.views import view_form as vf
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',v.index,name='index'),
-    url(r'^index/',v.index,name='index'),
-    url(r'^indexM/',v.indexMain,name='indexMain'),
-    url(r'^login/',v.login,name='login'),
-    url(r'^editTesting/',v.formView,name='formView'),
-    url(r'^chartData/',v.eChart,name='chartData'),
-    url(r'^tableData/',v.tableData,name='tableData'),
-    url(r'^addTesting/',v.addTesting,name='addTesting'),
+    url(r'^$',vi.index,name='index'),
+    url(r'^index/',vi.index,name='index'),
+    url(r'^indexM/',vi.indexMain,name='indexMain'),
+    url(r'^login/',vi.login,name='login'),
+    url(r'^editTesting/',vf.formView,name='formView'),
+    url(r'^chartData/',vi.eChart,name='chartData'),
+    url(r'^tableData/',vi.tableData,name='tableData'),
 ]
