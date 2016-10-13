@@ -63,7 +63,7 @@
                             <!-- <div class="hr-line-dashed"></div> -->
                             <div class="form-group">
                                 <label class="col-sm-1 control-label">领域</label>
-                              
+                              {{ domain }}
                                 <div class="col-sm-3">
                                     <select class="form-control m-b" id="selDomain" name="selDomain">
                                         <option>选项 1</option>
@@ -75,7 +75,7 @@
                                 <label class="col-sm-1 control-label">分类</label>
 
                                 <div class="col-sm-3">
-                               
+                               {{ types }}
                                     <select class="form-control m-b" name="selType">
                                         <option>选项 1</option>
                                         <option>选项 2</option>
@@ -86,7 +86,7 @@
                                 <label class="col-sm-1 control-label">级别</label>
 
                                 <div class="col-sm-3">
-                               
+                               {{ level }}
                                     <select class="form-control m-b" name="selLevel">
                                         <option>选项 1</option>
                                         <option>选项 2</option>
@@ -140,30 +140,20 @@
     <script>
         $(document).ready(function(){
             
-            //var domainList = ""
             bindDomain();
-            //alert("b");
-            // {{ domain }}
+
         });
-// {{ level }}   {{ types }}
+
         function bindDomain(){
 
-            var domainList = "{{ domain }}";
-            console.log();
-            alert(domainList);
-            // var domainList =[{"content":"很不错嘛","id":1,"nickname":"纳尼"},{"content":"哟西哟西","id":2,"nickname":"小强"}];
+            var domainList = {{ domain | safe }};
 
-            //$.getJSON(domainList,function(data){
+            $("#selDomain").empty();
+            // //$.getJSON(domainList,function(data){
                 $.each(domainList,function(i,item){
-                    alert(item);
-                    // alert(item.id);
+                    $("<option value="+item.id+">"+item.name+"</option>").appendTo("#selDomain");
+
                 });
-            //});
-            // var len = $("#selDomain").length;
-            // $("#selDomain").empty();
-            // for(var i=0;i<len;i++){
-            //     $("<option value="+i+">1111</option>").appendTo("#selDomain");
-            // }
             
         }
     </script>
