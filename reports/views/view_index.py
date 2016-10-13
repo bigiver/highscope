@@ -12,7 +12,11 @@ def index(request):
 #主页
 def indexMain(request):
 	return render(request,'index_v1.html')
-	
+
+#填写页
+def formView(request):
+	return render(request,'form_basic.html')
+
 #图表
 def eChart(request):
 	return render(request,'graph_echarts.html')
@@ -24,8 +28,3 @@ def tableData(request):
 #登录
 def login(request):
 	return render(request,'login.html')
-
-#填写表单
-def addTesting(request):
-    name = request.GET.get('txtName')
-    return HttpResponse(str(name))

@@ -27,7 +27,7 @@
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <form method="get" class="form-horizontal" action="{% url 'addTesting' %}">
+                        <form method="get" class="form-horizontal" action="">
                             <div class="form-group">
                                 <label class="col-sm-1 control-label">姓名</label>
 
@@ -63,9 +63,9 @@
                             <!-- <div class="hr-line-dashed"></div> -->
                             <div class="form-group">
                                 <label class="col-sm-1 control-label">领域</label>
-
+                              
                                 <div class="col-sm-3">
-                                    <select class="form-control m-b" name="selDomain">
+                                    <select class="form-control m-b" id="selDomain" name="selDomain">
                                         <option>选项 1</option>
                                         <option>选项 2</option>
                                         <option>选项 3</option>
@@ -75,6 +75,7 @@
                                 <label class="col-sm-1 control-label">分类</label>
 
                                 <div class="col-sm-3">
+                               
                                     <select class="form-control m-b" name="selType">
                                         <option>选项 1</option>
                                         <option>选项 2</option>
@@ -85,6 +86,7 @@
                                 <label class="col-sm-1 control-label">级别</label>
 
                                 <div class="col-sm-3">
+                               
                                     <select class="form-control m-b" name="selLevel">
                                         <option>选项 1</option>
                                         <option>选项 2</option>
@@ -131,14 +133,39 @@
     <script src="{% static "js/plugins/layer/laydate/laydate.js" %}"></script>
     <script>
         laydate({elem:"#hello",event:"focus"});var start={elem:"#start",format:"YYYY/MM/DD hh:mm:ss",min:laydate.now(),max:"2099-06-16 23:59:59",istime:true,istoday:false,choose:function(datas){end.min=datas;end.start=datas}};var end={elem:"#end",format:"YYYY/MM/DD hh:mm:ss",min:laydate.now(),max:"2099-06-16 23:59:59",istime:true,istoday:false,choose:function(datas){start.max=datas}};laydate(start);laydate(end);
+
     </script>
     
     
     <script>
         $(document).ready(function(){
-            $(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})
-
+            
+            //var domainList = ""
+            bindDomain();
+            //alert("b");
+            // {{ domain }}
         });
+// {{ level }}   {{ types }}
+        function bindDomain(){
+
+            var domainList = "{{ domain }}";
+            console.log();
+            alert(domainList);
+            // var domainList =[{"content":"很不错嘛","id":1,"nickname":"纳尼"},{"content":"哟西哟西","id":2,"nickname":"小强"}];
+
+            //$.getJSON(domainList,function(data){
+                $.each(domainList,function(i,item){
+                    alert(item);
+                    // alert(item.id);
+                });
+            //});
+            // var len = $("#selDomain").length;
+            // $("#selDomain").empty();
+            // for(var i=0;i<len;i++){
+            //     $("<option value="+i+">1111</option>").appendTo("#selDomain");
+            // }
+            
+        }
     </script>
 
 </body>
