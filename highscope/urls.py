@@ -27,4 +27,5 @@ urlpatterns = [
     url(r'^editTesting/',vf.formView,name='formView'),
     url(r'^chartData/',vi.eChart,name='chartData'),
     url(r'^tableData/',vi.tableData,name='tableData'),
+    url(r'^testingView/',vf.testingView,name='testingView'),
 ]

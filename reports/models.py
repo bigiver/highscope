@@ -62,5 +62,26 @@ class Level(models.Model):
 	def __unicode__(self):
 		return self.name
 
+
+class Testing(models.Model):
+	"""docstring for Testing"""
+	sudent_id = models.IntegerField()
+	sudent_name = models.CharField(max_length=100)
+	birth_Date = models.DateField()
+	age = models.IntegerField()
+	test_start = models.DateField()
+	test_end = models.DateField()
+	domain_id = models.IntegerField()
+	domain_name = models.CharField(max_length=255)
+	types_id = models.IntegerField()
+	types_name = models.CharField(max_length=255)
+	level_id = models.IntegerField()
+	level_name = models.IntegerField()
+	level_des = models.CharField(max_length=255)
+	testing = models.TextField()
+	
+	def __unicode__(self):
+		return self.sudent_name
+		
 # class Testing(models.Model):
 # 	domain = models.CharField('领域',max_length=)
