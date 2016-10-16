@@ -21,9 +21,6 @@ def formView(request):
 def eChart(request):
 	return render(request,'graph_echarts.html')
 
-#表格
-def tableData(request):
-	return render(request,'table_bootstrap.html')
 	
 #登录
 def login(request):

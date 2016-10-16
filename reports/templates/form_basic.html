@@ -132,10 +132,12 @@
                 data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
             });
             $("#formTesting").submit(function(){
+                
                 var student_id = $("#selName").find("option:selected").val();
                 var student_name = $("#selName").find("option:selected").text();
-                var birth_date = $("#selName").val();
+                var birth_date = $("#txtBirth").val();
                 var age = $("#txtAge").val();
+
                 var test_start = $("#dateStart").val();
                 var test_end = $("#dateEnd").val();
                 var domain_id = $("#selDomain").find("option:selected").val();
@@ -145,8 +147,10 @@
                 var level_id = $("#selLevel").find("option:selected").val();
                 var level_name = $("#selLevel").find("option:selected").text();
                 var level_des = $("#txtDescription").val();
+
                 var testing = $("#txtRemark").val();
-                // alert(studentId+studentName);
+              // alert("aa");
+              // alert(student_id);
                 $.ajax({
                     type:"POST",
                     data:{
@@ -191,7 +195,7 @@
 
             //下拉列表change事件
             $("#selName").change(function(){
-                // alert("a");
+                // alert($("#selName").val());
                 // alert(studentList);
                 
                 // //$.getJSON(domainList,function(data){
